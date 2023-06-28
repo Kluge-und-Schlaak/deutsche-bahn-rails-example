@@ -1,0 +1,39 @@
+<div class="flex flex-col">
+
+  <h1 class="font-bold text-4xl">Neuen Task anlegen</h1>
+  <% unless @task.errors.empty? %>
+    <span class="font-bold text-lg text-red-600 mt-4">Fehler beim Speichern</span>
+    <ul>
+    <% @task.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <div class="mt-8">
+    <%= form_with model: @task do |form| %>
+      <div class="flex flex-col">
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </div>
+      <div class="flex flex-col mt-4">
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div>
+
+      <div class="flex flex-col mt-4">
+        <span>User Name</span>
+        <%= text_field :user, :name %>
+      </div>
+
+      <div class="flex flex-col mt-4">
+        <%= form.label :due_date %>
+        <%= form.date_field :due_date %>
+      </div>
+
+      <div class="flex flex-col mt-4">
+        <%= form.submit "Task erstellen", { class: "underline"} %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,15 @@
+<div>
+  <h1 class="font-bold text-4xl">✅ What TODO</h1>
+  <h4 class="text-xl pt-12 pb-6"><%= @current_user.name %>'s Tasks</h1>
+  <section>
+    <ul>
+    <% @tasks.each do |task| %>
+      <li><span class="text-lg"><%= link_to task.title, task_path(task)  %> ➡️</span></li>
+    <% end %>
+    <ul>
+  </section>
+
+  <div class="mt-8">
+    <%= link_to "Task erstellen", new_task_path, { class: "underline"} %>
+  </div>
+</div>
